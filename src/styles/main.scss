@@ -1,5 +1,56 @@
-$bgColor: blue;
+@use 'hero';
+@use 'variaveis';
+
+@font-face {
+    font-family: 'Inter';
+    src: url(../../assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Carter One';
+    src: url(../../assets/fonts/Carter_One/CarterOne-Regular.ttf);
+    font-weight: 400;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    background-color: $bgColor;
+    background-color: variaveis.$corDeFundo;
+    font-family: 'Inter', sans-serif;
+}
+
+@mixin text($fontSize: 16px) {
+    font-size: $fontSize;
+    line-height: $fontSize + 10px;
+    color: variaveis.$corTextoPrincipal;
+}
+
+@mixin title($fontSize: 40px) {
+    @include text($fontSize);
+    color: variaveis.$corTextoSecundario;
+}
+
+.text--normal {
+    @include text(24px);
+}
+
+.text--small {
+    @include text;
+}
+
+.title--small {
+    @include title;
+}
+
+.title--normal {
+    @include title(72px);
+}
+
+li {
+    list-style: none;
 }

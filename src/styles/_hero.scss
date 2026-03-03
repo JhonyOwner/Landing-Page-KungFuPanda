@@ -1,0 +1,47 @@
+@use 'variaveis';
+
+.hero {
+    padding: 5.6vw;
+    min-height: 80vw;
+    background-image: url(../images/Hero_Desktop.png);
+    text-align: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &__content {
+        max-width: 800px;
+
+        &__branding {
+            max-width: 100%;
+            margin: 0 auto 38px;
+
+        }
+
+        .title--small {
+            margin: 0 auto 64px;
+            max-width: 100%;
+            font-family: 'Carter One';
+        }
+
+        &__combo {
+            display: flex;
+            justify-content: center;
+
+            &__item {
+                width: 300px;
+
+                button {
+                    display: block;
+                    width: 100%;
+                    height: 60px;
+                    font-size: 22px;
+                    color: variaveis.$corTextoSecundario;
+                    background-color: #ff0000;
+                    text-transform: uppercase;
+                    border-radius: 6px;
+                    margin-bottom: 36px;
+                }
+            }
+        }
+    }
+}
