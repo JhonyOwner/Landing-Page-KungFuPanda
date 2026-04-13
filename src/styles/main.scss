@@ -1,5 +1,8 @@
 @use 'hero';
 @use 'variaveis';
+@use 'shows';
+@use 'castmember';
+@use 'footer';
 
 @font-face {
     font-family: 'Inter';
@@ -17,11 +20,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
     background-color: variaveis.$corDeFundo;
-    font-family: 'Inter', sans-serif;
 }
 
 @mixin text($fontSize: 16px) {
@@ -53,4 +56,87 @@ body {
 
 li {
     list-style: none;
+}
+
+.image-text-section {
+    // Preenchimento interno
+    padding: 2vw 5.6vw; 
+    
+    // Grid com 2 colunas iguais
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    // Alinha o conteúdo verticalmente no centro
+    align-items: center;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+
+    // ===== IMAGEM =====
+    // Ocupa 100% da largura disponível
+    img {
+        max-width: 100%;
+    }
+
+    // ===== CONTAINER DE TEXTO =====
+    // Espaço com o texto
+    &__text_container {
+        // Preenchimento lateral
+        padding: 0 2vw;
+
+        // ===== TÍTULO =====
+        h2 {
+            // Margem abaixo do título
+            margin-bottom: 24px;
+        }
+    }
+
+    // ===== SEÇÃO COM IMAGEM EM LARGURA TOTAL =====
+    // Versão onde a imagem ocupa toda a largura
+    &__image_full_width {
+        // Exibe em bloco (a imagem fica embaixo)
+        display: block;
+        
+        // Position relativo para posicionar o texto sobre a imagem
+        position: relative;
+
+        // ===== IMAGEM =====
+        img {
+            // Ocupa 100% da largura
+            width: 50%;
+        }
+
+        // ===== CONTAINER DE TEXTO NA IMAGEM CHEIA =====
+        // Texto posicionado sobre a imagem
+        &__text_container {
+            // Posicionamento absoluto (sobre a imagem)
+            position: absolute;
+            
+            // No topo da imagem
+            top: 0;
+            
+            // A 50% da distância horizontal (lado direito)
+            left: 50%;
+            
+            // Ocupa toda a altura
+            height: 100%;
+            
+            // Ocupa 50% da largura (menos o padding)
+            width: calc(50% - 5.6vw);
+            
+            // Exibe em coluna (verticalmente)
+            display: flex;
+            flex-direction: column;
+            
+            // Centraliza o conteúdo verticalmente
+            justify-content: center;
+
+            @media (max-width: 768px) {
+                position: relative;;
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
 }

@@ -1,0 +1,101 @@
+@use 'variaveis';
+
+.cast {
+    position: relative;
+    width: 100%;
+    max-width: 85%;
+    margin: 0 auto;
+    padding: 7vw 5.6vw;
+    overflow: hidden;
+
+    &::-webkit-scrollbar {
+        display: none; // esconde a barra de rolagem no WebKit (Chrome, Safari)
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    &::before {
+        left: 0;
+        background: linear-gradient(to right, variaveis.$corDeFundo 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    &::after {
+        right: 0;
+        background: linear-gradient(to left, variaveis.$corDeFundo 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    h2 {
+        text-align: center;
+        color: variaveis.$corTextoSecundario;
+        border-bottom: 5px solid variaveis.$corTextoSecundario;
+        display: flex;
+        justify-content: center;
+        width: 15%;
+        margin: 0 auto;
+        margin-bottom: 60px;
+    }
+
+    ul {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+    }
+}
+
+    // imagens dos cards do elenco ficam circulares
+    .card-img-top {
+        border-radius: 50%;
+        object-fit: cover;        // mantém proporção ao preencher área
+        object-position: center 20%; // desloca o conteúdo para baixo (ajuste conforme necessário)
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;          // centraliza dentro da coluna
+        display: block;
+    }
+
+    .carousel-track {
+        display: flex;
+        width: max-content;
+        animation: slide 20s linear infinite;
+        will-change: transform; // otimiza para animação suave
+        transform: translateZ(0); // força aceleração de hardware
+
+        &:hover {
+            animation-play-state: paused;
+        }
+    }
+
+    .group {
+        display: flex;
+        gap: 40px;
+        flex-shrink: 0;
+        padding-right: 40px;
+    }
+
+    .card {
+        background-color: transparent;
+        border: none;
+        align-items: center;
+
+        &-body {
+            color: variaveis.$corTextoSecundario;
+        }
+    }
+
+    @keyframes slide {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-1414px);
+        }
+    }

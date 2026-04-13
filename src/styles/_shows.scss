@@ -1,0 +1,48 @@
+@use 'variaveis';
+
+.shows {
+    padding: 4vw 5.6vw; 
+    
+
+    &__list {
+        margin-top: 44px;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 24px;
+        
+        &__item {
+            img {
+                max-width: 95%;
+                border-radius: 4px;
+            }
+
+            p {
+                margin: 1.5rem auto 0;
+                max-width: 70%;
+                text-align: center;
+            }
+        }
+    }
+
+    &__tabs {
+        display: flex;
+        justify-content: center;
+
+        &__button {
+            color: variaveis.$corTextoSecundario;
+            font-size: 25px;
+            border: none;                        /* remove borda padrão */
+            border-bottom: 5px solid variaveis.$corTextoSecundario;
+            padding-bottom: 5px;
+            background: transparent;            /* ou none, igual */
+            text-transform: uppercase;
+            margin: 0.1vw;
+            cursor: pointer;
+
+                &:focus,
+                &:active {
+                    outline: none;                /* tira contorno preto de foco */
+                }
+            }
+        }
+    }
